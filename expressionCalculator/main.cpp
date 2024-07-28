@@ -13,7 +13,11 @@ vector<string> ValidTokensList = {
   "/"
 };
 
-// returns -1 if non operator found
+/// <summary>
+/// searches First least prioraty operator
+/// </summary>
+/// <param name="tokens"></param>
+/// <returns>-1 if non operator found</returns>
 static int searchFirstLestValOp(tokensParsed tokens) {
 	int retVal = -1;
 	for (int i = 0; i < tokens.size(); i++) {
@@ -41,9 +45,14 @@ static int searchFirstLestValOp(tokensParsed tokens) {
 
 //TODO: support bracets
 
-// eval token doesn't support bracets
-// in case of no tokens given returns 0
-double evalToken(tokensParsed tokens, uint16_t level = 0) {
+/// <summary>
+/// evaluate expression Tokens
+/// eval token doesn't support bracets
+/// </summary>
+/// <param name="tokens"></param>
+/// <param name="level"></param>
+/// <returns>in case of no tokens given returns 0</returns>
+static double evalToken(tokensParsed tokens, uint16_t level = 0) {
 	tokensParsed rhs; // right hand side
 	tokensParsed lhs; // left hand side
 
