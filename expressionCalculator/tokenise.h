@@ -51,3 +51,10 @@ string MatchStrNumber(string str);
 tokens tokeniseStr(string str, vector<string> ValidtokenList);
 
 void dumpTokens(ostream* stream, tokens tokenList);
+
+/// <summary>
+/// strips spaces from given string 
+/// </summary>
+/// <param name="str"></param>
+/// <returns></returns>
+string stripSpace(string str);

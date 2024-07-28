@@ -80,17 +80,20 @@ string MatchStrNumber(string str) {
 /// <returns>tokenList</returns>
 tokens tokeniseStr(string str, vector<string> ValidtokenList) {
   tokens ReturnTokens;
-  while (str.length() > 0) {
+
+  string strStriped = stripSpace(str);
+
+  while (strStriped.length() > 0) {
     // check if string beginning is an number
-    string matchedStr = MatchStrNumber(str);
+    string matchedStr = MatchStrNumber(strStriped);
 
     if (matchedStr == "") {
       // try token list
-      matchedStr = MatchStrAtBeginningList(str, ValidtokenList);
+      matchedStr = MatchStrAtBeginningList(strStriped, ValidtokenList);
     }
 
     // consume stringMatched
-    str.erase(0, matchedStr.size());
+    strStriped.erase(0, matchedStr.size());
 
     ReturnTokens.push_back(matchedStr);
   }
@@ -102,4 +105,16 @@ void dumpTokens(ostream* stream, tokens tokenList) {
     *stream << tokenList.at(i) << "\n";
   }
   return;
+}
+
+/// <summary>
+/// strips spaces from given string 
+/// </summary>
+/// <param name="str"></param>
+/// <returns></returns>
+string stripSpace(string str) {
+    while (str.find_first_of(' ') != string::npos) {
+        str.erase(str.find_first_of(' '), 1);
+    }
+    return str;
 }
