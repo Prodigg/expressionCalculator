@@ -84,18 +84,18 @@ tokens tokeniseStr(string str, vector<string> ValidtokenList) {
   string strStriped = stripSpace(str);
 
   while (strStriped.length() > 0) {
-    // check if string beginning is an number
-    string matchedStr = MatchStrNumber(strStriped);
+      // check if string beginning is an number
+      string matchedStr = MatchStrNumber(strStriped);
 
-    if (matchedStr == "") {
-      // try token list
-      matchedStr = MatchStrAtBeginningList(strStriped, ValidtokenList);
-    }
+      if (matchedStr == "") {
+          // try token list
+          matchedStr = MatchStrAtBeginningList(strStriped, ValidtokenList);
+      }
 
-    // consume stringMatched
-    strStriped.erase(0, matchedStr.size());
+      // consume stringMatched
+      strStriped.erase(0, matchedStr.size());
 
-    ReturnTokens.push_back(matchedStr);
+      ReturnTokens.push_back(matchedStr);
   }
   return ReturnTokens;
 }

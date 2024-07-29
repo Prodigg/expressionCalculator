@@ -10,7 +10,9 @@ vector<string> ValidTokensList = {
   "+",
   "-",
   "*",
-  "/"
+  "/", 
+  "(",
+  ")"
 };
 
 /// <summary>
@@ -20,20 +22,34 @@ vector<string> ValidTokensList = {
 /// <returns>-1 if non operator found</returns>
 static int searchFirstLestValOp(tokensParsed tokens) {
 	int retVal = -1;
+	size_t bracetsOpen = 0;
 	for (int i = 0; i < tokens.size(); i++) {
 		switch (tokens.at(i).type) {
 		case TOKEN_PLUS:
+			if (bracetsOpen > 0) break;
 			return i;
 		case TOKEN_MINUS:
+			if (bracetsOpen > 0) break;
 			return i;
 		case TOKEN_MULTIPLY:
 			if (retVal > i) break;
+			if (bracetsOpen > 0) break;
 			retVal = i;
 			break;
 		case TOKEN_DIVIDE:
 			if (retVal > i) break;
+			if (bracetsOpen > 0) break;
 			retVal = i;
 			break;
+		case TOKEN_BRACET_OPEN:
+			bracetsOpen++;
+			break;
+		case TOKEN_BRACET_CLOSE: 
+			bracetsOpen--;
+			if (bracetsOpen < 0) {
+				cout << errorMsg << "ERROR: closing bracet not valid. \n";
+				exit(EXIT_FAILURE);
+			}
 		default:
 			// do nothing
 			break;
@@ -47,23 +63,29 @@ static int searchFirstLestValOp(tokensParsed tokens) {
 
 /// <summary>
 /// evaluate expression Tokens
-/// eval token doesn't support bracets
 /// </summary>
 /// <param name="tokens"></param>
 /// <param name="level"></param>
-/// <returns>in case of no tokens given returns 0</returns>
+/// <returns>number calculatet</returns>
 static double evalToken(tokensParsed tokens, uint16_t level = 0) {
 	tokensParsed rhs; // right hand side
 	tokensParsed lhs; // left hand side
 
 	singleParsedToken operatorToken;
 
+	if (tokens.at(0).type == TOKEN_BRACET_OPEN && tokens.at(tokens.size() - 1).type == TOKEN_BRACET_CLOSE) {
+		// not needed bracets detected (removing)
+		tokens.erase(tokens.begin());
+		tokens.erase(--tokens.end());
+	}
+
 	tokens.shrink_to_fit();
 
 	// check if token list is valid 
 	if (tokens.size() <= 0) {
 		// no tokens given 
-		cout << errorMsg "EROR: no tokens given at level: " << level;
+		cout << errorMsg "EROR: no tokens given at level: " << level << "\n";
+		exit(EXIT_FAILURE);
 	}
 
 	// return number
@@ -102,7 +124,7 @@ static double evalToken(tokensParsed tokens, uint16_t level = 0) {
 	case TOKEN_DIVIDE:
 		return evalToken(lhs, level + 1) / evalToken(rhs, level + 1);
 	default:
-		cout << errorMsg << "ERROR: invalid token or number detected at level: " << level;
+		cout << errorMsg << "ERROR: invalid token or number detected at level: " << level << "\n";
 		exit(EXIT_FAILURE);
 	}
 }

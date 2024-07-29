@@ -11,7 +11,9 @@ enum TokenType {
   TOKEN_PLUS,
   TOKEN_MINUS,
   TOKEN_MULTIPLY,
-  TOKEN_DIVIDE
+  TOKEN_DIVIDE,
+  TOKEN_BRACET_OPEN,
+  TOKEN_BRACET_CLOSE
 };
 
 struct ParsedTokenAs {

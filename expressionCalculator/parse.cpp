@@ -43,6 +43,14 @@ tokensParsed parseTokens(tokens tokenList) {
       currentParsedToken.type = TOKEN_DIVIDE;
       currentParsedToken.as.expression = "/";
     }
+    else if (tokenList.at(i) == "(") {
+        currentParsedToken.type = TOKEN_BRACET_OPEN;
+        currentParsedToken.as.expression = "(";
+    }
+    else if (tokenList.at(i) == ")") {
+        currentParsedToken.type = TOKEN_BRACET_CLOSE;
+        currentParsedToken.as.expression = ")";
+    }
     else {
       cout << errorMsg << "ERROR: tokenType not valid for token\"" << tokenList.at(i) << "\"\n";
       exit(EXIT_FAILURE);
@@ -64,6 +72,10 @@ string tokenTypeToStr(TokenType tokenType) {
     return "TOKEN_MULTIPLY";
   case TOKEN_DIVIDE:
     return "TOKEN_DIVIDE";
+  case TOKEN_BRACET_OPEN:
+      return "TOKEN_BRACET_OPEN";
+  case TOKEN_BRACET_CLOSE:
+      return "TOKEN_BRACET_OPEN";
   default:
     cout << "ERROR: valid TokenType not found, could not resole string\n";
   }
