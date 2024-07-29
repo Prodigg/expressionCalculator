@@ -59,8 +59,6 @@ static int searchFirstLestValOp(tokensParsed tokens) {
 
 }
 
-//TODO: support bracets
-
 /// <summary>
 /// evaluate expression Tokens
 /// </summary>
