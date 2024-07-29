@@ -19,7 +19,7 @@ vector<string> ValidTokensList = {
 /// searches First least prioraty operator
 /// </summary>
 /// <param name="tokens"></param>
-/// <returns>-1 if non operator found</returns>
+/// <returns>-1 if no operator found</returns>
 static int searchFirstLestValOp(tokensParsed tokens) {
 	int retVal = -1;
 	size_t bracetsOpen = 0;
