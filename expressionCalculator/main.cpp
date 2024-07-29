@@ -108,7 +108,7 @@ static double evalToken(tokensParsed tokens, uint16_t level = 0) {
 		lhs.push_back(tokens.at(i));
 	}
 
-	for (size_t i = operatorPos + 1; i < tokens.size(); i++) {
+	for (size_t i = static_cast<size_t>(operatorPos) + 1; i < tokens.size(); i++) {
 		rhs.push_back(tokens.at(i));
 	}
 
