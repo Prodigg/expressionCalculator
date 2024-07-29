@@ -77,7 +77,7 @@ string tokenTypeToStr(TokenType tokenType) {
   case TOKEN_BRACET_CLOSE:
       return "TOKEN_BRACET_OPEN";
   default:
-    cout << "ERROR: valid TokenType not found, could not resole string\n";
+    cout << "ERROR: valid TokenType not found, could not resolve string\n";
   }
 }
 
