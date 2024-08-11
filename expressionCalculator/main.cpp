@@ -71,6 +71,13 @@ static double evalToken(tokensParsed tokens, uint16_t level = 0) {
 
 	singleParsedToken operatorToken;
 
+	// check if token list is valid 
+	if (tokens.size() <= 0) {
+		// no tokens given 
+		cout << errorMsg "EROR: no tokens given at level: " << level << "\n";
+		exit(EXIT_FAILURE);
+	}
+
 	if (tokens.at(0).type == TOKEN_BRACET_OPEN && tokens.at(tokens.size() - 1).type == TOKEN_BRACET_CLOSE) {
 		// not needed bracets detected (removing)
 		tokens.erase(tokens.begin());
@@ -129,7 +136,7 @@ static double evalToken(tokensParsed tokens, uint16_t level = 0) {
 
 int main() {
   
-	cout << "Welcome to the expression Calculator by Raphael Sauer. \nPlease enter expression to calculate: ";
+	cout << "Welcome to the expression Calculator by Prodigg. \nPlease enter expression to calculate: ";
 	string input = "";
 	getline(cin, input);
 	cout << "\n";
