@@ -43,15 +43,19 @@ bool isStrAtBeginning(string str, string strToCheck) {
 /// </summary>
 /// <param name="str"></param>
 /// <param name="strList"></param>
-/// <returns>matched String</returns>
-string MatchStrAtBeginningList(string str, vector<string> strList) {
+/// <param name="originalStr"></param>
+/// <returns>matched string</returns>
+string MatchStrAtBeginningList(string str, vector<string> strList, string originalStr) {
   for (size_t i = 0; i < strList.size(); i++) {
     if (isStrAtBeginning(str, strList.at(i))) {
       return strList.at(i);
     }
   }
-
-  cout << errorMsg << "ERROR: no match for string\"" << str << "\". ";
+  string tmpErrorStr = "";
+  tmpErrorStr.insert(tmpErrorStr.begin(), originalStr.length() - str.length(), ' ');
+  cout << "ERROR: no match for string: \"" << str << "\". \n";
+  cout << originalStr << "\n";
+  cout << tmpErrorStr << "^\n";
   exit(EXIT_FAILURE);
 }
 
@@ -83,13 +87,15 @@ tokens tokeniseStr(string str, vector<string> ValidtokenList) {
 
   string strStriped = stripSpace(str);
 
+  string originalStr = str;
+
   while (strStriped.length() > 0) {
       // check if string beginning is an number
       string matchedStr = MatchStrNumber(strStriped);
 
       if (matchedStr == "") {
           // try token list
-          matchedStr = MatchStrAtBeginningList(strStriped, ValidtokenList);
+          matchedStr = MatchStrAtBeginningList(strStriped, ValidtokenList, originalStr);
       }
 
       // consume stringMatched

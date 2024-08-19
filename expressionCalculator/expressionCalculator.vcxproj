@@ -132,8 +132,10 @@
     <ClCompile Include="tokenise.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="evaliuation.h" />
     <ClInclude Include="parse.h" />
     <ClInclude Include="tokenise.h" />
+    <ClInclude Include="Validation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

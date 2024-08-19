@@ -32,5 +32,11 @@
     <ClInclude Include="parse.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Validation.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="evaliuation.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

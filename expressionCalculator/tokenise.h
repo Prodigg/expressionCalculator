@@ -32,8 +32,9 @@ bool isStrAtBeginning(string str, string strToCheck);
 /// </summary>
 /// <param name="str"></param>
 /// <param name="strList"></param>
-/// <returns>matched String</returns>
-string MatchStrAtBeginningList(string str, vector<string> strList);
+/// <param name="originalStr"></param>
+/// <returns>matched string</returns>
+string MatchStrAtBeginningList(string str, vector<string> strList, string originalStr);
 
 /// <summary>
 /// returns number string if an number is found at beginning of an given string
