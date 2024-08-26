@@ -53,12 +53,21 @@ bool isTokenOperator(TokenType tokenType) {
 	return false;
 }
 
+void waitKeyPress() {
+	system("pause");
+	return;
+}
+
 /// <summary>
 /// Validates if expression has errors
 /// </summary>
 /// <param name="tokens"></param>
 void checkExpression(tokensParsed tokens) {
-	if (tokens.size() == 0) return;
+	if (tokens.size() == 0) {
+		cout << "ERROR: no expression given \n";
+		waitKeyPress();
+		exit(EXIT_FAILURE);
+	}
 
 	string TmpErrorMsg = "";
 
@@ -77,6 +86,7 @@ void checkExpression(tokensParsed tokens) {
 			cout << "ERROR: bracket closing unexpected\n";
 			cout << tokensToString(tokens) << "\n";
 			cout << TmpErrorMsg << "^\n";
+			waitKeyPress();
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -86,6 +96,7 @@ void checkExpression(tokensParsed tokens) {
 		cout << "ERROR: brackets not closed\n";
 		cout << tokensToString(tokens) << "\n";
 		cout << TmpErrorMsg << "^\n";
+		waitKeyPress();
 		exit(EXIT_FAILURE);
 	}
 
@@ -98,6 +109,7 @@ void checkExpression(tokensParsed tokens) {
 		cout << "ERROR: unexpected operator\n";
 		cout << tokensToString(tokens) << "\n";
 		cout << TmpErrorMsg << "^\n";
+		waitKeyPress();
 		exit(EXIT_FAILURE);
 	}
 
@@ -112,6 +124,7 @@ void checkExpression(tokensParsed tokens) {
 				cout << "ERROR: unexpected number\n";
 				cout << tokensToString(tokens) << "\n";
 				cout << TmpErrorMsg << "^\n";
+				waitKeyPress();
 				exit(EXIT_FAILURE);
 			}
 			break;
@@ -122,6 +135,7 @@ void checkExpression(tokensParsed tokens) {
 				cout << "ERROR: unexpected operator\n";
 				cout << tokensToString(tokens) << "\n";
 				cout << TmpErrorMsg << "^\n";
+				waitKeyPress();
 				exit(EXIT_FAILURE);
 			}
 			break;
@@ -132,6 +146,7 @@ void checkExpression(tokensParsed tokens) {
 				cout << "ERROR: unexpected operator\n";
 				cout << tokensToString(tokens) << "\n";
 				cout << TmpErrorMsg << "^\n";
+				waitKeyPress();
 				exit(EXIT_FAILURE);
 			}
 			break;
@@ -142,6 +157,7 @@ void checkExpression(tokensParsed tokens) {
 				cout << "ERROR: unexpected operator\n";
 				cout << tokensToString(tokens) << "\n";
 				cout << TmpErrorMsg << "^\n";
+				waitKeyPress();
 				exit(EXIT_FAILURE);
 			}
 			break;
@@ -152,6 +168,7 @@ void checkExpression(tokensParsed tokens) {
 				cout << "ERROR: unexpected operator\n";
 				cout << tokensToString(tokens) << "\n";
 				cout << TmpErrorMsg << "^\n";
+				waitKeyPress();
 				exit(EXIT_FAILURE);
 			}
 			break;
@@ -162,6 +179,7 @@ void checkExpression(tokensParsed tokens) {
 				cout << "ERROR: unexpected opening of bracket\n";
 				cout << tokensToString(tokens) << "\n";
 				cout << TmpErrorMsg << "^\n";
+				waitKeyPress();
 				exit(EXIT_FAILURE);
 			}
 			break;
@@ -172,6 +190,7 @@ void checkExpression(tokensParsed tokens) {
 				cout << "ERROR: unexpected operator\n";
 				cout << tokensToString(tokens) << "\n";
 				cout << TmpErrorMsg << "^\n";
+				waitKeyPress();
 				exit(EXIT_FAILURE);
 			}
 			if (lastTokenType == TOKEN_BRACET_OPEN) {
@@ -180,11 +199,13 @@ void checkExpression(tokensParsed tokens) {
 				cout << "ERROR: expected number or expression\n";
 				cout << tokensToString(tokens) << "\n";
 				cout << TmpErrorMsg << "^\n";
+				waitKeyPress();
 				exit(EXIT_FAILURE);
 			}
 			break;
 		default:
 			cout << errorMsg << "ERROR: unknown token\n";
+			waitKeyPress();
 			exit(EXIT_FAILURE);
 			break;
 		}
@@ -195,6 +216,7 @@ void checkExpression(tokensParsed tokens) {
 		cout << "ERROR: unexpected operator\n";
 		cout << tokensToString(tokens) << "\n";
 		cout << TmpErrorMsg << "^\n";
+		waitKeyPress();
 		exit(EXIT_FAILURE);
 	}
 
