@@ -36,6 +36,6 @@ int main() {
 	checkExpression(tokensListParsed);
 
 	cout << "The result is: " << evalToken(tokensListParsed);
-
+	waitKeyPress();
 	exit(EXIT_SUCCESS);
 }
