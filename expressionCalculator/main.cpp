@@ -35,7 +35,7 @@ int main() {
 	// check expression before evaluation
 	checkExpression(tokensListParsed);
 
-	cout << "The result is: " << evalToken(tokensListParsed);
+	cout << "The result is: " << evalToken(tokensListParsed) << "\n";
 	waitKeyPress();
 	exit(EXIT_SUCCESS);
 }
